@@ -10,15 +10,17 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-public class AddressQuery implements Converter {
+public class AddressQuery implements Convert {
 
 
 
     @Override
-    public Object converter(Object objeto, String uri) {
+    public Object conver(Object objeto, String uri) {
 
+
+        String endereco = "https://viacep.com.br/ws/" + uri + "/json";
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(uri))
+                .uri(URI.create(endereco))
                 .build();
         try {
             HttpResponse<String> response = HttpClient
